@@ -34,10 +34,53 @@
 // let item3 = document.querySelector('.list-group-item:nth-child(3)');
 // item3.style.visibility = 'hidden';
 // QUERYSELECTORALL //
-let items = document.querySelectorAll('.list-group-item');
+//let items = document.querySelectorAll('.list-group-item');
 //console.log(items);
-items[1].style.color = 'green';
-let oddItems = document.querySelectorAll('li:nth-child(odd)');
-for(let i=0; i<oddItems.length; i++){
-    oddItems[i].style.background = 'green';
-}
+// items[1].style.color = 'green';
+// let oddItems = document.querySelectorAll('li:nth-child(odd)');
+// for(let i=0; i<oddItems.length; i++){
+//     oddItems[i].style.background = 'green';
+// }
+// let items = document.querySelector('#items');
+//console.log(items.parentNode);
+//items.parentNode.style.background = 'grey';
+// console.log(items.parentElement.parentElement);
+// items.parentElement.parentElement.parentElement.style.background = 'yellow';
+// console.log(items.childNodes);
+// console.log(items.children);
+// console.log(items.children[2]);
+// items.children[2].textContent = 'archie';
+// console.log(items.firstElementChild);
+//items.firstElementChild.textContent = 'archie';
+// console.log(items.previousElementSibling);
+// items.previousElementSibling.style.color = 'blue';
+
+//  CREATING NEW ELEMENT    //
+let newDiv = document.createElement('div');
+
+newDiv.setAttribute('class', 'newHello');
+newDiv.setAttribute('id', 'hello1');
+newDiv.title = 'hello div';
+//  CREATE AND INSERT TEXT NODE //
+let newText = document.createTextNode('hello world');
+newDiv.appendChild(newText);
+console.log(newDiv);
+// adding new div before item lister //
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+container.insertBefore(newDiv, h1);
+
+
+//  adding new div before item 1    //
+let newDiv1 = document.createElement('div');
+newDiv1.setAttribute('class', 'newHello1');
+newDiv1.setAttribute('id', 'newhello1');
+newDiv1.title = 'hello div1';
+let newText1 = document.createTextNode('hello world');
+newDiv1.appendChild(newText1);
+
+let container1 = document.querySelector('div .list-group');
+let h2 = document.querySelector('div li');
+
+container1.insertBefore(newDiv1, h2);
