@@ -18,9 +18,13 @@
 // console.log(title[0]);
 // title[0].style.fontWeight = '900';
 // title[0].style.color = 'green';
-let items = document.getElementsByClassName('list-group-item');
-console.log(items);
-items[2].style.backgroundColor = 'green';
-for(let i=0; i<items.length; i++){
-    items[i].style.fontWeight = 'bold';
+let itemsByClass = document.getElementsByClassName('list-group-item');
+
+for(let i=0; i<itemsByClass.length; i++){
+    itemsByClass[i].style.fontWeight = 'bold';  //does not apply to the li element without class.
+}
+let itemsByTag = document.getElementsByTagName('li');
+
+for(let i=0; i<itemsByTag.length; i++){
+    itemsByTag[i].style.color = 'red'; //applies to all elements with the tag 'li'.
 }
