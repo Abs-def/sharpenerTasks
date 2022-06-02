@@ -29,7 +29,15 @@
 //     itemsByTag[i].style.color = 'red'; //applies to all elements with the tag 'li'.
 // }
 //QUERY SELECTOR//
-let item2 = document.querySelector('.list-group-item:nth-child(2)');
-item2.style.background = 'green';
-let item3 = document.querySelector('.list-group-item:nth-child(3)');
-item3.style.visibility = 'hidden';
+// let item2 = document.querySelector('.list-group-item:nth-child(2)');
+// item2.style.background = 'green';
+// let item3 = document.querySelector('.list-group-item:nth-child(3)');
+// item3.style.visibility = 'hidden';
+// QUERYSELECTORALL //
+let items = document.querySelectorAll('.list-group-item');
+//console.log(items);
+items[1].style.color = 'green';
+let oddItems = document.querySelectorAll('li:nth-child(odd)');
+for(let i=0; i<oddItems.length; i++){
+    oddItems[i].style.background = 'green';
+}
