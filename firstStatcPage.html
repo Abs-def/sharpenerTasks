@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .container{
+            background-image: url('https://sharpener.tech/static/media/sharpener_logo.b578c065.png');
+            display: flex;
+            justify-content: center;
+            
+            margin-top: 10px;
+        }
+        
+       .title, .description{
+           text-align: center;
+           
+       }
+        .booking_box{
+            opacity: 98%;
+            background-color: rgb(205, 184, 184);
+            
+            border : 2px solid rgb(131, 69, 69);
+            border-radius: 5px;
+            padding: 20px;
+            margin:auto;
+            /* margin-left: 400px;
+            margin-right: 400px; */
+        }
+        .date_time{
+            display: flex;
+        }
+        .name, .email, .tel, .date, .time{
+            border-radius: 3px;
+            padding: 5px;
+            margin: 2px;
+            width: 100%;
+        }
+        .button{
+            border-radius: 3px;
+            margin-top: 10px;
+            width: 100%;
+            background-color: brown;
+        }
+        .admin, .side_boxes{
+            width: auto;
+        }
+        .admin{
+            margin-left: 130px;
+        }
+        .side_boxes{
+            margin-top: 50px;
+            margin-right: 100px;
+            
+        }
+        
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="container">
+    <div class="admin">
+        <h1 style="color:brown; text-shadow: 1px 1px bisque; text-decoration-line: underline;">YAV</h1>
+    </div>
+    <div class="booking_box">
+        <h3  class="title" style="color:brown">Book a Call</h3>
+        <p class="description">Book a call slot and our representative will call you within 1hr hour of selected time.</p>
+        <form class="form">
+           <label for="name">Name:</label> 
+           <input class="name" type="text" id="name"><br>
+           <label for="email">Email:</label>
+           <input class="email" type="email" id="email" ><br>
+           <label for="phone">Phone Number:</label>
+           <input class="tel" type="tel" name="phone" id="phone"><br>
+           <label for="time">Time for call:</label>
+
+           <div class="date_time">
+            <input class="date" type="date" name="date" id="date">
+            <input class="time" type="time" name="time" id="time">
+           </div>
+           <input class="button" type="button" value="GET A CALL" onclick="printEverything()">
+        </form>
+    </div>
+    <div class="side_boxes">
+        <input type="button" style="border : 2px solid rgb(131, 69, 69)"  value="Schedule a call"> 
+        <input type="button" style="border : 2px solid rgb(131, 69, 69)"  value="Hire with Us">
+    </div>
+
+    <script>
+        //
+        function printEverything(){
+            
+            let name=document.getElementById("name").value;
+            let email=document.getElementById("email").value;
+            let phone=document.getElementById("phone").value;
+            let date=document.getElementById("date").value;
+            let time=document.getElementById("time").value;
+
+            localStorage.setItem('name', name);
+            localStorage.setItem('email', email);
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('date', date);
+            localStorage.setItem('time', time);
+        
+        }
+    </script>
+</body>
+</html>
