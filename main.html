@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+        }
+
+        ul {
+        list-style: none;
+        }
+
+        ul li {
+        padding: 5px;
+        background: #f4f4f4;
+        margin: 5px 0;
+        }
+
+        header {
+        background: #f4f4f4;
+        padding: 1rem;
+        text-align: center;
+        }
+
+        .container {
+        margin: auto;
+        width: 500px;
+        overflow: auto;
+        padding: 3rem 2rem;
+        }
+
+        #my-form {
+        padding: 2rem;
+        background: #f4f4f4;
+        }
+
+        #my-form label {
+        display: block;
+        }
+
+        #my-form input[type='text'] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        }
+
+        .btn {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        border: 0;
+        background: #333;
+        color: #fff;
+        border-radius: 5px;
+        margin: 5px 0;
+        }
+
+        .btn:hover {
+        background: #444;
+        }
+
+        .bg-dark {
+        background: #333;
+        color: #fff;
+        }
+
+        .error {
+        background: orangered;
+        color: #fff;
+        padding: 5px;
+        margin: 5px;
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS For Beginners</title>
+    
+  </head>
+  <body>
+    <header>
+      <h1>JS For Beginners</h1>
+    </header>
+
+    <section class="container">
+      <form id="my-form">
+        <h1>Add User</h1>
+        <div class="msg"></div>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="text" id="email">
+        </div>
+        <input class="btn" type="submit" value="Submit">
+      </form>
+
+      <ul id="users"></ul>
+
+      <!-- <ul class="items">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+      </ul> -->
+    </section>
+    
+
+    <script>
+        const btn = document.querySelector('.btn');
+        // btn.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     document.querySelector('#my-form').style.background = "pink";
+        // })
+        // btn.addEventListener('mouseover', (e) => {
+        //     e.preventDefault();
+        //     document.querySelector('#my-form').style.background = "cyan";
+        // })
+        // btn.addEventListener('mouseout', (e) => {
+        //     e.preventDefault();
+        //     document.querySelector('#my-form').style.background = "seagreen";
+        // })
+        const myForm = document.querySelector('#my-form');
+        let nameInput = document.querySelector('#name');
+        let emailInput = document.querySelector('#email');
+        const msg = document.querySelector('.msg');
+        const userList = document.querySelector('#users');
+
+        myForm.addEventListener('submit', onSubmit);
+
+        function User(name, email){
+          this.name = name;
+          this.email = email;
+        }
+        
+        function onSubmit(e){
+            e.preventDefault();
+            
+            if(nameInput.value == '' || emailInput.value == ''){
+                
+                msg.classList.add('error');
+                msg.innerHTML = 'Please enter all the fields';
+
+                setTimeout(() => msg.remove(), 3000);
+            }else{
+              // let userDetails = {
+              //   name : nameInput.value,
+              //   email : emailInput.value
+              // };
+              let userDetails = new User(nameInput.value, emailInput.value);
+
+              localStorage.setItem(emailInput.value, JSON.stringify(userDetails));
+
+              let newChild = document.createElement('li');
+              newChild.appendChild(document.createTextNode(`name: ${nameInput.value}, email: ${emailInput.value}`));
+              userList.appendChild(newChild);
+                //clearing input area afterwards
+                nameInput.value = '';
+                emailInput.value = '';
+            }
+        }
+        
+        window.addEventListener('load', displayDetails);
+        
+        function displayDetails(){
+          for(let i = 0; i < localStorage.length; i++){
+            userDetails_deserialized = JSON.parse(localStorage.getItem(localStorage.key(i)));
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(`name: ${userDetails_deserialized.name}, email: ${userDetails_deserialized.email}`));
+
+            userList.appendChild(li);
+          }
+        }
+    </script>
+  </body>
+</html>
